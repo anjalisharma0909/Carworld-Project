@@ -1,0 +1,665 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica Now Display;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #101010;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 1rem;
+   
+}
+main .navbar {
+  width: 100%;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  color: white;
+}
+main .navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+main .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+main .nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+main .nav-links li a:hover {
+  color: #FFD700; /* gold highlight on hover */
+}
+main .burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+main .burger div {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  main .nav-links {
+    position: absolute;
+    right: 0;
+    top: 70px;
+    height: calc(100vh - 70px);
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  main .nav-links.active {
+    transform: translateX(0);
+  }
+  main .burger {
+    display: flex;
+  }
+}
+main section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+main #top {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+main #top video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+main .text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%; /* text box ki width */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* sirf 2 lines tak limit */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+main .shine-text {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.2) 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+@keyframes shine {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+main .bottom-text {
+  position: absolute;
+  bottom: 50px; /* distance from bottom */
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+main .bottom-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); /* makes text readable on video */
+}
+main .bottom-text button {
+  background: #fff;
+  color: #000;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+main .bottom-text button:hover {
+  background: #000;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+main #models {
+  width: 100%;
+  height: 100%;
+  padding: 80px 20px;
+  background: #1e1e1e; /* dark for contrast */
+  color: #fff;
+  text-align: center;
+  overflow: visible;
+}
+main #models .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+main .models-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+main .model-card {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+main .model-card video {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .model-card h3 {
+  padding: 15px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+main .model-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(255, 255, 255, 0.2);
+}
+main .racing-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+main .left video {
+  width: 90%;
+  height: 90%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+  /* New shiny white border effect */
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+main .left video:hover {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.9), 0 0 80px rgba(255, 255, 255, 0.6);
+  transform: scale(1.02);
+}
+main .left, main .right {
+  width: 50%;
+  height: 100%;
+}
+main .left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center; /* vertically center */
+  justify-content: center; /* horizontally center */
+  border-radius: 12px;
+}
+main .left video {
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+}
+main .racing-section .shine-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineWhite 3s infinite linear;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+@keyframes shineWhite {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+main .racing-section .shine-text:hover::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineWhite 2s infinite linear;
+}
+main .right p {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+main .racing-section2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+main .right video {
+  width: 90%;
+  height: 90%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+main .right video:hover {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.9), 0 0 80px rgba(255, 255, 255, 0.6);
+  transform: scale(1.02);
+}
+main .right, main .left {
+  width: 50%;
+  height: 100%;
+}
+main .right {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+main .right video {
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+}
+main .racing-section2 .shine-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineWhite 3s infinite linear;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+@keyframes shineWhite {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+main .racing-section2 .shine-text:hover::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineWhite 2s infinite linear;
+}
+main .left p {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+main .racing-section2 {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+main .right video {
+  width: 90%;
+  height: 90%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+main .right video:hover {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.9), 0 0 80px rgba(255, 255, 255, 0.6);
+  transform: scale(1.02);
+}
+main .right, main .left {
+  width: 50%;
+  height: 100%;
+}
+main .right {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+main .right video {
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+}
+main .racing-section2 .shine-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineWhite 3s infinite linear;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+@keyframes shineWhite {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+main .racing-section2 .shine-text:hover::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineWhite 2s infinite linear;
+}
+main .left p {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+main .racing-section2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+main .right video {
+  width: 90%;
+  height: 90%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+main .right video:hover {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.9), 0 0 80px rgba(255, 255, 255, 0.6);
+  transform: scale(1.02);
+}
+main .right, main .left {
+  width: 50%;
+  height: 100%;
+}
+main .right {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+main .right video {
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+}
+main .racing-section2 .shine-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineWhite 3s infinite linear;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+@keyframes shineWhite {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+main .racing-section2 .shine-text:hover::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineWhite 2s infinite linear;
+}
+main .left p {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+main #creative-car-world {
+  background: linear-gradient(135deg, #4f4d4a, #272625);
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 15px;
+  max-width: 900px;
+  height: 300px;
+  margin: 50px auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+main #creative-car-world:hover {
+  transform: scale(1.02);
+}
+main #creative-car-world h2 {
+  color: #f8f3f3;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+main #creative-car-world p {
+  color: #fdf9f9;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+main #creative-car-world img {
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  transition: transform 0.3s;
+}
+main #creative-car-world img:hover {
+  transform: scale(1.05);
+}
+main .learn-more {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #3d3938;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+main .learn-more:hover {
+  background-color: #ff3b2f;
+}
+main footer {
+  background: #111;
+  color: #fff;
+  padding: 60px 20px 20px;
+  font-family: "Arial", sans-serif;
+}
+main .footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+main .footer-about h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+main .footer-about p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+main .footer-links h3,
+main .footer-social h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+main .footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+main .footer-links ul li {
+  margin-bottom: 8px;
+}
+main .footer-links ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+main .footer-links ul li a:hover {
+  color: #ff4d00;
+}
+main .footer-social .social-icons a {
+  color: #fff;
+  margin-right: 15px;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+main .footer-social .social-icons a:hover {
+  color: #ff4d00;
+  transform: scale(1.2);
+}
+main .footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+  font-size: 0.9rem;
+}/*# sourceMappingURL=style.css.map */
